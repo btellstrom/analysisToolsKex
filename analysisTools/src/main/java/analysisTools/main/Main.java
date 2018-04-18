@@ -2,9 +2,11 @@ package analysisTools.main;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
-import analysisTools.analysis.*;
+import analysisTools.analysis.DataClass;
+import analysisTools.analysis.SpeedAnalysis;
 
 public class Main {
 
@@ -28,7 +30,7 @@ public class Main {
 				System.out.println("--file : sets the file to write the payload to."
 						+ " Default payload.csv");
 				System.out.println("--type: sets the type of the output. returnTimes "
-						+ "or rt returns a sorted list of all times. returLists "
+						+ "or rt returns a sorted list of all times. returnLists "
 						+ "or rl returns all lists analysed sorted after time to "
 						+ "sort. returnListTimes or all or rlt or rtl returns both times"
 						+ " and lists, sorted by time."
@@ -39,22 +41,23 @@ public class Main {
 				length = Integer.parseInt(args[index+1]);
 			}
 			if (arg.contains("--size")) {
-				length = Integer.parseInt(args[index+1]);
+				size = Integer.parseInt(args[index+1]);
 			}
 			if (arg.contains("--file")) {
 				filename = args[index+1];
 			}
-			index++;
 			if(arg.equalsIgnoreCase("--type")) {
 				typeOfAnalysis = args[index+1];
 			}
+
+			index++;
 	
 		}
 		
 		SpeedAnalysis analysis = new SpeedAnalysis(length);
-		DataClass[] analysed= analysis.runComparison(size);
+		ArrayList<DataClass> analysed = analysis.runComparison(size);
 
-		Arrays.sort(analysed);
+		Collections.sort(analysed);
 			
 		try{
 			PrintWriter out = new PrintWriter(filename);				
@@ -62,18 +65,18 @@ public class Main {
 
 			if(typeOfAnalysis.equals("returnTimes") || typeOfAnalysis.equals("rt")) {
 				for (int i = 0; i < size; i++) {
-					System.out.println(analysed[i].getTime());
+					out.println(analysed.get(i).getTime());
 					}	
 			}
 			else if(typeOfAnalysis.equals("returnLists") || typeOfAnalysis.equals("rl")) {
 				for (int i = 0; i < size; i++) {
-					System.out.println(analysed[i].getList());
+					out.println(analysed.get(i).getList());
 					}	
 			}
 			else if(typeOfAnalysis.equals("returnListTimes") || typeOfAnalysis.equals("all") || 
 					typeOfAnalysis.equals("rlt") || typeOfAnalysis.equals("rtl")) {
 				for (int i = 0; i < size; i++) {
-					System.out.println(analysed[i]);
+					out.println(analysed.get(i));
 					}	
 			}
 			out.close();

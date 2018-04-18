@@ -22,8 +22,10 @@ public class DataClass implements Comparable<DataClass> {
 		StringBuilder sb = new StringBuilder(analysedList.length);
 		for(int i: analysedList) {
 			sb.append(i);
+			sb.append(",");
 		}
-		return (analysisTime + ", " + sb.toString());
+		String ret = analysisTime + "," + sb.toString();
+		return ret;
 	}
 
 	

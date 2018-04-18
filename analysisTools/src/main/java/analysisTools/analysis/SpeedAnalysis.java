@@ -1,5 +1,7 @@
 package analysisTools.analysis;
 
+import java.util.ArrayList;
+
 import analysisTools.analysedPrograms.*;
 
 public class SpeedAnalysis {
@@ -12,23 +14,23 @@ public class SpeedAnalysis {
 		this(10000);
 	}
 	
-	public DataClass[] runComparison(int numberOfIterations) {
+	public ArrayList<DataClass> runComparison(int numberOfIterations) {
 		int[] randomList = new int[length];
-		int[] originalList = new int[length];
 		
 		long startTime;
 		long endTime;
 		
-		DataClass[] analysis = new DataClass[numberOfIterations];
+		ArrayList<DataClass> analysis = new ArrayList<DataClass>(numberOfIterations);
 		for(int i = 0; i<numberOfIterations; i++) {
 			randomList = CreateInts.giveInts(length);
+			int[] originalList = new int[length];
 			System.arraycopy(randomList, 0, originalList , 0, randomList.length -1);
 			
 			startTime = System.nanoTime();
-			QuickSortOriginal.sort(randomList,0, randomList.length -1);
+			QuickSortOriginal.sort(randomList, 0, randomList.length -1);
 			endTime = System.nanoTime();
 		
-			analysis[i] = new DataClass(endTime - startTime, originalList);
+			analysis.add(new DataClass(endTime - startTime, originalList));
 		}
 		return analysis;
 	}
