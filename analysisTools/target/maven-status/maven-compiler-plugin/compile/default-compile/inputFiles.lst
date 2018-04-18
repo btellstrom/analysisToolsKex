@@ -1,7 +1,8 @@
-/home/benjamin/KTH/KEX/AnalysisTools/analysisTools/src/main/java/analysisTools/analysis/CreateInts.java
-/home/benjamin/KTH/KEX/AnalysisTools/analysisTools/src/main/java/analysisTools/analysis/ListGenerator.java
-/home/benjamin/KTH/KEX/AnalysisTools/analysisTools/src/main/java/analysisTools/analysis/WorstCaseComparisonAfterPerturbation.java
-/home/benjamin/KTH/KEX/AnalysisTools/analysisTools/src/main/java/analysisTools/analysedPrograms/QuickSortOriginal.java
-/home/benjamin/KTH/KEX/AnalysisTools/analysisTools/src/main/java/analysisTools/main/Main.java
-/home/benjamin/KTH/KEX/AnalysisTools/analysisTools/src/main/java/analysisTools/analysedPrograms/QuickSortPONE.java
-/home/benjamin/KTH/KEX/AnalysisTools/analysisTools/src/main/java/analysisTools/analysedPrograms/QuickSortMONE.java
+/home/benjamin/KTH/KEX/analysKod/analysisToolsKex/analysisTools/src/main/java/analysisTools/analysis/DataClass.java
+/home/benjamin/KTH/KEX/analysKod/analysisToolsKex/analysisTools/src/main/java/analysisTools/analysedPrograms/QuickSortOriginal.java
+/home/benjamin/KTH/KEX/analysKod/analysisToolsKex/analysisTools/src/main/java/analysisTools/main/Main.java
+/home/benjamin/KTH/KEX/analysKod/analysisToolsKex/analysisTools/src/main/java/analysisTools/analysedPrograms/QuickSortPONE.java
+/home/benjamin/KTH/KEX/analysKod/analysisToolsKex/analysisTools/src/main/java/analysisTools/analysis/ListGenerator.java
+/home/benjamin/KTH/KEX/analysKod/analysisToolsKex/analysisTools/src/main/java/analysisTools/analysis/SpeedAnalysis.java
+/home/benjamin/KTH/KEX/analysKod/analysisToolsKex/analysisTools/src/main/java/analysisTools/analysedPrograms/QuickSortMONE.java
+/home/benjamin/KTH/KEX/analysKod/analysisToolsKex/analysisTools/src/main/java/analysisTools/analysis/CreateInts.java
