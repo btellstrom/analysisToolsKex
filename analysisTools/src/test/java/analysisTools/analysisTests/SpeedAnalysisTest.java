@@ -44,8 +44,28 @@ public class SpeedAnalysisTest
     	
     	
     	for(int i = 0; i < testLength; i++) {
-    		if(data.get(1).getList()[i] == data.get(2).getList()[2]) {
-    			fail();
+    		if(data.get(1).getList()[i] == data.get(2).getList()[i]) {
+    			test = false;
+    		}
+    		else {
+    			test = true;
+    			break;
+    		}
+    	}
+    	assertTrue(test);
+    }
+    public void testLastZero() {
+    	int length = 10;
+    	int[] list;
+    	boolean test = true;
+    	for(int i = 0; i < length; i++) {
+    		list = CreateInts.giveInts(length);
+    		if(list[length -1] == 0) {
+    			test = false;
+    		}
+    		else {
+    			test = true;
+    			break;
     		}
     	}
     	assertTrue(test);

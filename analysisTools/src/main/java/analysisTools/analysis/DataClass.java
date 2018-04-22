@@ -19,13 +19,24 @@ public class DataClass implements Comparable<DataClass> {
 	
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder(analysedList.length);
+		StringBuilder sb = new StringBuilder(2*analysedList.length);
 		for(int i: analysedList) {
 			sb.append(i);
 			sb.append(",");
 		}
+		sb.deleteCharAt(sb.length()-1);
 		String ret = analysisTime + "," + sb.toString();
 		return ret;
+	}
+	
+	public String listToString() {
+		StringBuilder sb = new StringBuilder(2*analysedList.length);
+		for(int i: analysedList) {
+			sb.append(i);
+			sb.append(",");
+		}
+		//sb.deleteCharAt(sb.length()-1);
+		return sb.toString();
 	}
 
 	
