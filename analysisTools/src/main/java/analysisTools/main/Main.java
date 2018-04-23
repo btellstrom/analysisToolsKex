@@ -35,7 +35,15 @@ public class Main {
 						+ "or rl returns all lists analysed sorted after time to "
 						+ "sort. returnListTimes or all or rlt or rtl returns both times"
 						+ " and lists, sorted by time."
-						+ " Default is returnTimes.");
+						+ " Default is returnTimes."
+						+ "compare or c compares with the previously "
+						+ "created files."
+						+ "separate or s creates two separate files, "
+						+ "one for time and one for lists."
+						+ "deep or d also runs the deepanalysis.");
+				System.out.println("--original is run along with c if there is no "
+						+ "previously created ...SortedLists.csv.");
+				
 				System.exit(0);
 			}
 			if (arg.contains("--length")) {
@@ -60,6 +68,8 @@ public class Main {
 
 		SpeedAnalysis analysis = new SpeedAnalysis(length);
 		
+		//If comparison run this block of code
+		
 		if(typeOfAnalysis.equals("compare") || typeOfAnalysis.equals("c")) {
 			ArrayList<DataClass> output = new ArrayList<DataClass>((int)(size));
 			//List<DataClass> outputWorst = new ArrayList<DataClass>((int)(size*0.1));
@@ -75,13 +85,13 @@ public class Main {
 				else {
 					in = new BufferedReader(new FileReader(fileFamily + "SortedLists.csv"));
 				}
-				BufferedReader in2 = new BufferedReader(new FileReader(fileFamily + "Times.csv"));
+				//BufferedReader in2 = new BufferedReader(new FileReader(fileFamily + "Times.csv"));
 				List<DataClass> input = new ArrayList<DataClass>((size));
 				String[] splitLine;
 				int[] list;
 				
 				try{
-					in2.readLine(); //first line is always "time to sort"
+					//in2.readLine(); //first line is always "time to sort"
 					String str = in.readLine();
 
 					while(str != null) {
@@ -90,18 +100,18 @@ public class Main {
 						for(int i = 0; i < splitLine.length; i++) {
 							list[i] = Integer.parseInt(splitLine[i]);
 						}
-						input.add(new DataClass(Integer.parseInt(in2.readLine()), list));
+						input.add(new DataClass(0, list));
 						str = in.readLine();
 					}
 
 					in.close();
-					in2.close();
 					
 					/*
 					 * runs the analysis on input and subset of input
 					 */
-					//TODO better way of setting nrOfIteratiosn
+					//TODO better way of setting nrOfIteratios
 					output = analysis.runDeepAnalysis(input, 100);
+	
 					if(orig) {
 						Collections.sort(output);
 					}
@@ -144,16 +154,18 @@ public class Main {
 				System.out.println(e.getMessage());
 			}
 		}
+		//Else this blocks determine the way to format the output
 		else {
+
 			ArrayList<DataClass> analysed = analysis.runComparison(size+16);
-			
+				
 			List<DataClass> output = analysed.subList(15, analysed.size()-1);
 			
 			try{
 				if(typeOfAnalysis.equals("returnTimes") || typeOfAnalysis.equals("rt")) {
 					PrintWriter out = new PrintWriter(fileFamily + "Times.csv");				
 					out.println("Time to sort");
-	
+		
 					Collections.sort(output);
 					for (int i = 0; i < size; i++) {
 						out.println(output.get(i).getTime());
@@ -193,6 +205,7 @@ public class Main {
 					PrintWriter out = new PrintWriter(fileFamily + "Times.csv");				
 					out.println("Time to sort");
 					PrintWriter out2 = new PrintWriter(fileFamily + "Lists.csv");
+					
 					for (int i = 0; i < size; i++) {
 						out.println(output.get(i).getTime());
 						out2.println(output.get(i).listToString());
@@ -201,10 +214,11 @@ public class Main {
 					out.close();
 				}
 				else if(typeOfAnalysis.equals("deep") || typeOfAnalysis.equals("d")) {
+					
 					Collections.sort(output);
 					ArrayList<DataClass> ret = new ArrayList<DataClass>((int)(0.1*output.size()));
 					ret = analysis.runDeepAnalysis(output, size);
-					
+						
 					PrintWriter out = new PrintWriter(fileFamily + "Times.csv");
 					out.println("Time to sort");
 					PrintWriter out2 = new PrintWriter(fileFamily + "Lists.csv");

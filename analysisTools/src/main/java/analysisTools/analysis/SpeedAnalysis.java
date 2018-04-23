@@ -1,9 +1,17 @@
 package analysisTools.analysis;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import analysisTools.analysedPrograms.*;
+import quicksort.*;
+import bubblesort.*;
+import heapsort.*;
+import insertionsort.*;
+import mergesort.*;
+import oracle.Oracle;
+import selectionsort.*;
+import shellsort.*;
 
 public class SpeedAnalysis {
 	private int length;
@@ -23,7 +31,7 @@ public class SpeedAnalysis {
 	 */
 
 	
-	public ArrayList<DataClass> runComparison(int numberOfIterations) {
+	public ArrayList<DataClass> runComparison(int numberOfIterations){
 		int[] randomList = new int[length];
 		
 		long time;
@@ -46,6 +54,7 @@ public class SpeedAnalysis {
 	 * @param sortedList the list of DataClass objects
 	 * @param nrOfIterations the number of times to sort each list
 	 * @return a list of DataClass objects with average time and list.
+	 * @throws IOException 
 	 */
 	public ArrayList<DataClass> runDeepAnalysis(List<DataClass> sortedList, int nrOfIterations){
 		ArrayList<DataClass> ret = new ArrayList<DataClass>(sortedList.size());
@@ -66,8 +75,9 @@ public class SpeedAnalysis {
 	 * Measures the time it takes to sort a list.
 	 * @param oList the list to sort.
 	 * @return the time taken to sort oList.
+	 * @throws IOException 
 	 */
-	public long timeToSort(int[] oList) {
+	public long timeToSort(int[] oList){
 		int[] list = new int[oList.length];
 		//System.arraycopy(list, 0, oList, 0,  oList.length);
 		for(int i = 0; i < oList.length; i++) {
@@ -78,7 +88,7 @@ public class SpeedAnalysis {
 		long endTime = System.nanoTime();
 		
 		startTime = System.nanoTime();
-		QuickSortOriginal.sort(list, 0, list.length-1);
+		QuickSort.sort(list, 0, list.length-1);
 		endTime = System.nanoTime();
 		
 		return endTime - startTime;

@@ -4,6 +4,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import analysisTools.analysis.*;
@@ -40,13 +41,12 @@ public class SpeedAnalysisTest
     	int testLength = 10;
     	boolean test = true;
     	SpeedAnalysis speed = new SpeedAnalysis(testLength);
-    	ArrayList<DataClass> data = speed.runComparison(testLength);
-    	
-    	
+    	ArrayList<DataClass> data = speed.runComparison(testLength);	
+	    	
     	for(int i = 0; i < testLength; i++) {
     		if(data.get(1).getList()[i] == data.get(2).getList()[i]) {
     			test = false;
-    		}
+	    		}
     		else {
     			test = true;
     			break;
