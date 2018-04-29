@@ -164,8 +164,12 @@ public class Main {
 				 */
 				BufferedReader in = new BufferedReader(new FileReader(fileFamily + "SortedLists.csv"));
 				BufferedReader in2 = new BufferedReader(new FileReader(fileFamily + "Times.csv"));
-				long[] inputTimesFirst, inputTimesMiddle, inputTimesLast  = new long[size-1];
-				int[] first, middle, last;
+				long[] inputTimesFirst = new long[size-1];
+				long[] inputTimesMiddle = new long[size-1];
+				long[] inputTimesLast = new long[size-1];
+				int[] first = new int[length];
+				int[] middle = new int[length];
+				int[] last = new int[length];
 				
 				in2.readLine(); //first line is always "time to sort"
 				String str = in.readLine();
@@ -198,7 +202,8 @@ public class Main {
 					str = in.readLine();
 				}
 					
-				int j,k = 0;
+				int j = 0;
+				int k = 0;
 				long time;
 				
 				for(int i = 0; i < size-2; i++) {
