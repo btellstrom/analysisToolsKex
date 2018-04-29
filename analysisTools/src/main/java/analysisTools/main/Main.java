@@ -155,15 +155,13 @@ public class Main {
 		}
 		
 		else if(typeOfAnalysis.equals("listdistribution") || typeOfAnalysis.equals("ld")) {
-			ArrayList<DataClass> output = new ArrayList<DataClass>((int)(size));
-			//List<DataClass> outputWorst = new ArrayList<DataClass>((int)(size*0.1));
 			
 			try {
 				/*
 				 * reads file
 				 */
 				BufferedReader in = new BufferedReader(new FileReader(fileFamily + "SortedLists.csv"));
-				BufferedReader in2 = new BufferedReader(new FileReader(fileFamily + "Times.csv"));
+				BufferedReader in2 = new BufferedReader(new FileReader(fileFamily + "DeepTimes.csv"));
 				long[] inputTimesFirst = new long[size-1];
 				long[] inputTimesMiddle = new long[size-1];
 				long[] inputTimesLast = new long[size-1];
@@ -235,6 +233,10 @@ public class Main {
 				PrintWriter outFirst = new PrintWriter(fileFamily + "FirstListDistribution.csv");
 				PrintWriter outMiddle = new PrintWriter(fileFamily + "MiddleListDistribution.csv");
 				PrintWriter outLast = new PrintWriter(fileFamily + "LastListDistribution.csv");
+				
+				outFirst.println("Ranks");
+				outMiddle.println("Ranks");
+				outLast.println("Ranks");
 				
 				for(int i = 0; i < length; i++) {
 					outFirst.println(firstRanks[i]);
