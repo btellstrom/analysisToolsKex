@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import analysisTools.analysis.DataClass;
-import analysisTools.analysis.SpeedAnalysis;
+import analysisTools.analysis.*;
 
 public class Main {
 
@@ -154,6 +153,99 @@ public class Main {
 				System.out.println(e.getMessage());
 			}
 		}
+		
+		else if(typeOfAnalysis.equals("listdistribution") || typeOfAnalysis.equals("ld")) {
+			ArrayList<DataClass> output = new ArrayList<DataClass>((int)(size));
+			//List<DataClass> outputWorst = new ArrayList<DataClass>((int)(size*0.1));
+			
+			try {
+				/*
+				 * reads file
+				 */
+				BufferedReader in = new BufferedReader(new FileReader(fileFamily + "SortedLists.csv"));
+				BufferedReader in2 = new BufferedReader(new FileReader(fileFamily + "Times.csv"));
+				long[] inputTimesFirst, inputTimesMiddle, inputTimesLast  = new long[size-1];
+				int[] first, middle, last;
+				
+				in2.readLine(); //first line is always "time to sort"
+				String str = in.readLine();
+				int check = 1;
+				String[] splitLine;
+					
+				while(str != null) {
+					if(check == 1) {
+						splitLine = str.split(",");
+						first = new int[splitLine.length];
+						for(int i = 0; i < splitLine.length; i++) {
+							first[i] = Integer.parseInt(splitLine[i]);
+						}
+					}
+					else if(check == 0.5*size) {
+						splitLine = str.split(",");
+						middle = new int[splitLine.length];
+						for(int i = 0; i < splitLine.length; i++) {
+							middle[i] = Integer.parseInt(splitLine[i]);
+						}
+					}
+					else if(check == size) {
+						splitLine = str.split(",");
+						last = new int[splitLine.length];
+						for(int i = 0; i < splitLine.length; i++) {
+							last[i] = Integer.parseInt(splitLine[i]);
+						}
+					}
+					check++;
+					str = in.readLine();
+				}
+					
+				int j,k = 0;
+				long time;
+				
+				for(int i = 0; i < size-2; i++) {
+					time = Integer.parseInt(in2.readLine());
+					if(i != 0) {
+						inputTimesFirst[i-1] = time; 
+					}
+					if( i != (0.5*size)) {
+						inputTimesMiddle[j] = time;
+						j++;
+					}
+					if(i != (size-1)){
+						inputTimesLast[k] = time;
+						k++;
+					}
+				}
+
+				in.close();
+				in2.close();
+				
+				ListCaseDistribution firstList = new ListCaseDistribution(inputTimesFirst);
+				ListCaseDistribution middleList = new ListCaseDistribution(inputTimesMiddle);
+				ListCaseDistribution lastList = new ListCaseDistribution(inputTimesLast);
+				
+				int[] firstRanks = firstList.runExperiment(first, length);
+				int[] middleRanks = firstList.runExperiment(middle, length);
+				int[] lastRanks = firstList.runExperiment(last, length);
+				
+				PrintWriter outFirst = new PrintWriter(fileFamily + "FirstListDistribution.csv");
+				PrintWriter outMiddle = new PrintWriter(fileFamily + "MiddleListDistribution.csv");
+				PrintWriter outLast = new PrintWriter(fileFamily + "LastListDistribution.csv");
+				
+				for(int i = 0; i < length; i++) {
+					outFirst.println(firstRanks[i]);
+					outMiddle.println(middleRanks[i]);
+					outLast.println(lastRanks[i]);
+				}
+					
+				outFirst.close();
+				outMiddle.close();
+				outLast.close();
+							
+			}catch(IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
 		//Else this blocks determine the way to format the output
 		else {
 
