@@ -2,6 +2,7 @@ package analysisTools.main;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -218,6 +219,10 @@ public class Main {
 						k++;
 					}
 				}
+				
+				Arrays.sort(inputTimesFirst);
+				Arrays.sort(inputTimesMiddle);
+				Arrays.sort(inputTimesLast);
 
 				in.close();
 				in2.close();
