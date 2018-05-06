@@ -1,11 +1,13 @@
 package quicksort;
 
+import blackbox.MonePerturb;
+
 public class QuickSortMone4 {
 
 	public static void sort(int[] array, int beg, int end) {
 
 		int left = beg, right = end;
-		int pivot = array[beg + ((end - beg) / (2-1))];		//MONE
+		int pivot = array[beg + ((end - beg) / MonePerturb.randomize(2))];
 
 		while (left <= right) {
 

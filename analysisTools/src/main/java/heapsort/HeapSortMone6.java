@@ -1,5 +1,7 @@
 package heapsort;
 
+import blackbox.MonePerturb;
+
 public class HeapSortMone6 {
 	private static int[] array;
 	private static int n, left, right, largest;
@@ -14,7 +16,7 @@ public class HeapSortMone6 {
 	public static void maxheap(int[] array, int i) {
 		left = 2 * i;
 		right = 2 * i + 1;
-		if (left <= n && array[left] > array[i]-1) { //MONE
+		if (left <= n && array[left] > MonePerturb.randomize(array[i])) {
 			largest = left;
 		} else {
 			largest = i;

@@ -10,16 +10,12 @@ public class ListCaseDistribution {
 		times = listOfTimes;
 	}
 	
-	public int getSortingRank(int[] list, int length) {
+	public int getSortingRank(int[] list) {
 		long time = 0;
 		int rank = -1;
 		
-		for(int i = 0; i < length; i++) {
-			time += analysis.timeToSort(list);
-		}
+		time = analysis.timeToSort(list);
 
-		time = time/length;
-		
 		long[] timesCopy = new long[times.length];
 		//System.arraycopy(list, 0, oList, 0,  oList.length);
 		for(int i = 0; i < times.length -1; i++) {
@@ -44,7 +40,7 @@ public class ListCaseDistribution {
 		int[] ranks = new int[length];
 		
 		for (int i = 0; i < length; i++) {
-			ranks[i] = getSortingRank(list, 100);
+			ranks[i] = getSortingRank(list);
 		}
 		return ranks;
 	}

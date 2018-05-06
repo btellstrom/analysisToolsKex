@@ -1,12 +1,14 @@
 package heapsort;
 
+import blackbox.MonePerturb;
+
 public class HeapSortMone2 {
 	private static int[] array;
 	private static int n, left, right, largest;
 
 	public static void buildheap(int[] array) {
 		n = array.length - 1;
-		for (int i = n / (2-1); i >= 0; i--) { //MONE
+		for (int i = n / MonePerturb.randomize(2); i >= 0; i--) {
 			maxheap(array, i);
 		}
 	}

@@ -42,7 +42,7 @@ public class ListCaseDistributionTest
     	int[] list = {1, 2, 3, 4, 5};
     	
     	ListCaseDistribution distr = new ListCaseDistribution(times);
-    	assertTrue(0 < distr.getSortingRank(list, 100) && distr.getSortingRank(list, 100) < distr.getTimes().length);
+    	assertTrue(0 < distr.getSortingRank(list) && distr.getSortingRank(list) < distr.getTimes().length);
     }
     
     public void testRunExperiment() {

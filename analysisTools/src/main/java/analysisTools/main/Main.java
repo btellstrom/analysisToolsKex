@@ -110,7 +110,7 @@ public class Main {
 					 * runs the analysis on input and subset of input
 					 */
 					//TODO better way of setting nrOfIteratios
-					output = analysis.runDeepAnalysis(input, 100);
+					output = analysis.runDeepAnalysis(input);
 	
 					if(orig) {
 						Collections.sort(output);
@@ -154,6 +154,13 @@ public class Main {
 				System.out.println(e.getMessage());
 			}
 		}
+		else if(typeOfAnalysis.equals("AllExperiments") || typeOfAnalysis.equals("large")) {
+			try {
+				AllTests.runAllExperiments(args);
+			}catch(IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		
 		else if(typeOfAnalysis.equals("listdistribution") || typeOfAnalysis.equals("ld")) {
 			
@@ -190,7 +197,7 @@ public class Main {
 							middle[i] = Integer.parseInt(splitLine[i]);
 						}
 					}
-					else if(check == size) {
+					else if(check == (size-5)) {
 						splitLine = str.split(",");
 						last = new int[splitLine.length];
 						for(int i = 0; i < splitLine.length; i++) {
@@ -205,7 +212,7 @@ public class Main {
 				int k = 0;
 				long time;
 				
-				for(int i = 0; i < size-2; i++) {
+				for(int i = 0; i < size-1; i++) {
 					time = Integer.parseInt(in2.readLine());
 					if(i != 0) {
 						inputTimesFirst[i-1] = time; 
@@ -321,7 +328,7 @@ public class Main {
 					
 					Collections.sort(output);
 					ArrayList<DataClass> ret = new ArrayList<DataClass>((int)(0.1*output.size()));
-					ret = analysis.runDeepAnalysis(output, size);
+					ret = analysis.runDeepAnalysis(output);
 						
 					PrintWriter out = new PrintWriter(fileFamily + "Times.csv");
 					out.println("Time to sort");

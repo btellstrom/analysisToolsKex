@@ -1,5 +1,7 @@
 package quicksort;
 
+import blackbox.MonePerturb;
+
 public class QuickSortMone7 {
 
 	public static void sort(int[] array, int beg, int end) {
@@ -9,7 +11,7 @@ public class QuickSortMone7 {
 
 		while (left <= right) {
 
-			while (array[left] < (pivot-1)) {		//MONE
+			while (array[left] < MonePerturb.randomize(pivot)) {
 				left++;
 			}
 

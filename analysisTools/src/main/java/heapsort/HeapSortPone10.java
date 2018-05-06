@@ -1,5 +1,7 @@
 package heapsort;
 
+import blackbox.PonePerturb;
+
 public class HeapSortPone10 {
 	private static int[] array;
 	private static int n, left, right, largest;
@@ -39,7 +41,7 @@ public class HeapSortPone10 {
 		array = input;
 		buildheap(array);
 
-		for (int i = n; i+1 > 0; i--) {	//PONE
+		for (int i = n; PonePerturb.randomize(i) > 0; i--) {
 			exchange(0, i);
 			n = n - 1;
 			maxheap(array, 0);

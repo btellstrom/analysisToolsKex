@@ -1,5 +1,7 @@
 package heapsort;
 
+import blackbox.PonePerturb;
+
 public class HeapSortPone7 {
 	private static int[] array;
 	private static int n, left, right, largest;
@@ -20,7 +22,7 @@ public class HeapSortPone7 {
 			largest = i;
 		}
 
-		if (right <= n && array[right]+1 > array[largest]) { 	//PONE
+		if (right <= n && PonePerturb.randomize(array[right]) > array[largest]) {
 			largest = right;
 		}
 		if (largest != i) {

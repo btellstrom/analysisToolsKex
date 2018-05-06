@@ -1,5 +1,7 @@
 package shellsort;
 
+import blackbox.MonePerturb;
+
 public class ShellSortMone5 {
 	public static void sort(int array[]) {
 		int i, j, gap, temp;
@@ -7,7 +9,7 @@ public class ShellSortMone5 {
 		gap = array.length / 2;
 
 		while (gap > 0) {
-			i = (gap-1);			//MONE
+			i = MonePerturb.randomize(gap);
 
 			while (i < array.length) {
 				temp = array[i];

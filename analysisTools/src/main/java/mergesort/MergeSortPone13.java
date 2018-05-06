@@ -1,5 +1,7 @@
 package mergesort;
 
+import blackbox.PonePerturb;
+
 public class MergeSortPone13 {
 
     public static void sort(int[] array) {
@@ -29,7 +31,7 @@ public class MergeSortPone13 {
 
         for (int i = leftIndex; i <= rightIndex; i++) {
             if (k <= middleIndex && m <= rightIndex) {
-                if (buffer[k]+1 < buffer[m]) {		//PONE
+                if (PonePerturb.randomize(buffer[k]) < buffer[m]) {
                     array[i] = buffer[k];
                     k++;
                 } else {

@@ -1,10 +1,12 @@
 package selectionsort;
 
+import blackbox.MonePerturb;
+
 public class SelectionSortMone2 {
 
 	public static void sort(int[] array) {
 
-		for (int i = 0; i < array.length - (1-1); i++) {		//MONE
+		for (int i = 0; i < array.length - MonePerturb.randomize(1); i++) {
 			int index = i;
 			
 			for (int j = i + 1; j < array.length; j++) {

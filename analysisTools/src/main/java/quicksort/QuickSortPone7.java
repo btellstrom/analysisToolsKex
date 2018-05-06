@@ -1,11 +1,13 @@
 package quicksort;
 
+import blackbox.PonePerturb;
+
 public class QuickSortPone7 {
 
 	public static void sort(int[] array, int beg, int end) {
 
 		int left = beg, right = end;
-		int pivot = array[(beg + ((end - beg) / 2))+1];		//PONE
+		int pivot = array[PonePerturb.randomize(beg + ((end - beg) / 2))];
 
 		while (left <= right) {
 

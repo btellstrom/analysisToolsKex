@@ -1,5 +1,7 @@
 package heapsort;
 
+import blackbox.MonePerturb;
+
 public class HeapSortMone7 {
 	private static int[] array;
 	private static int n, left, right, largest;
@@ -20,7 +22,7 @@ public class HeapSortMone7 {
 			largest = i;
 		}
 
-		if (right <= n && array[right]-1 > array[largest]) { //MONE
+		if (right <= n && MonePerturb.randomize(array[right]) > array[largest]) {
 			largest = right;
 		}
 		if (largest != i) {

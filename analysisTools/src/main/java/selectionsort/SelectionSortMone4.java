@@ -1,5 +1,7 @@
 package selectionsort;
 
+import blackbox.MonePerturb;
+
 public class SelectionSortMone4 {
 
 	public static void sort(int[] array) {
@@ -7,7 +9,7 @@ public class SelectionSortMone4 {
 		for (int i = 0; i < array.length - 1; i++) {
 			int index = i;
 			
-			for (int j = (i-1) + 1; j < array.length; j++) {		//MONE
+			for (int j = MonePerturb.randomize(i) + 1; j < array.length; j++) {
 				if (array[j] < array[index]) {
 					index = j;
 				}

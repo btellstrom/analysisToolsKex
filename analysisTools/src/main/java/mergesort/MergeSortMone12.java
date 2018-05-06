@@ -1,5 +1,7 @@
 package mergesort;
 
+import blackbox.MonePerturb;
+
 public class MergeSortMone12 {
 
     public static void sort(int[] array) {
@@ -29,7 +31,7 @@ public class MergeSortMone12 {
 
         for (int i = leftIndex; i <= rightIndex; i++) {
             if (k <= middleIndex && m <= rightIndex) {
-                if (buffer[k] < buffer[m]-1) {		//MONE
+                if (buffer[k] < MonePerturb.randomize(buffer[m])) {
                     array[i] = buffer[k];
                     k++;
                 } else {

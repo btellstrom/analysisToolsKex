@@ -1,5 +1,7 @@
 package quicksort;
 
+import blackbox.PonePerturb;
+
 public class QuickSortPone17 {
 
 	public static void sort(int[] array, int beg, int end) {
@@ -24,7 +26,7 @@ public class QuickSortPone17 {
 			}
 
 		}
-		if (beg < right+1)				//PONE
+		if (beg < PonePerturb.randomize(right))
 			sort(array, beg, right);
 		if (end > left)
 			sort(array, left, end);

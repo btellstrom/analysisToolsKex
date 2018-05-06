@@ -1,10 +1,12 @@
 package shellsort;
 
+import blackbox.MonePerturb;
+
 public class ShellSortMone2 {
 	public static void sort(int array[]) {
 		int i, j, gap, temp;
 
-		gap = array.length / (2-1);		//MONE
+		gap = array.length / MonePerturb.randomize(2);
 
 		while (gap > 0) {
 			i = gap;

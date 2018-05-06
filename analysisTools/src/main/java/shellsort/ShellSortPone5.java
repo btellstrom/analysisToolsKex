@@ -1,5 +1,7 @@
 package shellsort;
 
+import blackbox.PonePerturb;
+
 public class ShellSortPone5 {
 	public static void sort(int array[]) {
 		int i, j, gap, temp;
@@ -12,7 +14,7 @@ public class ShellSortPone5 {
 			while (i < array.length) {
 				temp = array[i];
 
-				for (j = i; (j >= gap) && ((array[j - gap]+1) > temp); j -= gap) {		//PONE
+				for (j = i; (j >= gap) && (PonePerturb.randomize(array[j - gap]) > temp); j -= gap) {
 					array[j] = array[j - gap];
 				}
 				array[j] = temp;

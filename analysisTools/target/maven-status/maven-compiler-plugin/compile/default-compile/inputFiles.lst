@@ -8,6 +8,7 @@
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/shellsort/ShellSortMone3.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/selectionsort/SelectionSortPone6.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/quicksort/QuickSort.java
+/home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/blackbox/MonePerturb.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/heapsort/HeapSortMone7.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/quicksort/QuickSortPone17.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/quicksort/QuickSortPone18.java
@@ -19,6 +20,7 @@
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/selectionsort/SelectionSort.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/bubblesort/BubbleSortPone1.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/quicksort/QuickSortPone1.java
+/home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/blackbox/PonePerturb.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/selectionsort/SelectionSortPone5.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/quicksort/QuickSortPone4.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/quicksort/QuickSortPone6.java
@@ -27,6 +29,7 @@
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/mergesort/MergeSortMone12.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/intcreation/CreateInts.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/bubblesort/BubbleSort.java
+/home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/analysisTools/main/AllTests.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/quicksort/QuickSortPone19.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/analysisTools/main/Main.java
 /home/benjamin/KTH/KEX/analysisToolsKex/analysisTools/src/main/java/bubblesort/BubbleSortMone6.java

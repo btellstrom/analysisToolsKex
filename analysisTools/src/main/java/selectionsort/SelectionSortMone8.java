@@ -1,5 +1,7 @@
 package selectionsort;
 
+import blackbox.MonePerturb;
+
 public class SelectionSortMone8 {
 
 	public static void sort(int[] array) {
@@ -8,7 +10,7 @@ public class SelectionSortMone8 {
 			int index = i;
 			
 			for (int j = i + 1; j < array.length; j++) {
-				if ((array[j]-1) < array[index]) {			//MONE
+				if (MonePerturb.randomize(array[j]) < array[index]) {	
 					index = j;
 				}
 			}

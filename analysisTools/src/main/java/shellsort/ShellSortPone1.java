@@ -1,10 +1,12 @@
 package shellsort;
 
+import blackbox.PonePerturb;
+
 public class ShellSortPone1 {
 	public static void sort(int array[]) {
 		int i, j, gap, temp;
 
-		gap = (array.length+1) / 2;		//PONE
+		gap = PonePerturb.randomize(array.length) / 2;
 
 		while (gap > 0) {
 			i = gap;
