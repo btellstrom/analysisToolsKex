@@ -45,6 +45,7 @@ public class ListCaseDistributionTest
     	assertTrue(0 < distr.getSortingRank(list) && distr.getSortingRank(list) < distr.getTimes().length);
     }
     
+    
     public void testRunExperiment() {
     	int length = 10;
     	

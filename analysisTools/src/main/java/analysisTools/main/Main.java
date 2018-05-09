@@ -162,6 +162,30 @@ public class Main {
 			}
 		}
 		
+		else if(typeOfAnalysis.equals("AllExperiments") || typeOfAnalysis.equals("large")) {
+			try {
+				AllTests.runAllExperiments(args);
+			}catch(IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		else if(typeOfAnalysis.equals("RankExperiment") || typeOfAnalysis.equals("largeRanks")) {
+			try {
+				RankDistributionWorstByOriginal.runRankExperiments(args);
+			}catch(IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		else if(typeOfAnalysis.equals("VarianceExperiment") || typeOfAnalysis.equals("largeVariance")) {
+			try {
+				VarianceOfTimeFor50Last.runVarianceExperiments(args);
+			}catch(IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		
 		else if(typeOfAnalysis.equals("listdistribution") || typeOfAnalysis.equals("ld")) {
 			
 			try {

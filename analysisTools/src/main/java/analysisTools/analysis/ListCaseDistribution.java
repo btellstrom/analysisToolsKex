@@ -36,6 +36,16 @@ public class ListCaseDistribution {
 		
 	}
 	
+	public static int getSortingRank(long[] listOfTimes, long time) {
+		int i;
+		for(i = 0; i < listOfTimes.length; i++) {
+			if(time < listOfTimes[i]) {
+				break;
+			}
+		}
+		return (i+1); //+1 due to 0 = rank 1
+	}
+	
 	public int[] runExperiment(int[] list, int length) {
 		int[] ranks = new int[length];
 		

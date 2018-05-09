@@ -7,39 +7,29 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import analysisTools.analysis.ListCaseDistribution;
 import analysisTools.analysis.SpeedAnalysis;
 
 public class RankDistributionWorstByOriginal {
 	private static int lengthOfLists = 1000; //The length of the lists we are sorting
 	private static int numberOfLists = 5000; //The number of lists we are comparing
+	private static int nrOfRanks = 100;
+	private static SpeedAnalysis timer = new SpeedAnalysis();
+	
+	static public int[] getNRanks(int numberOfRanks, long[] listOfTimes,int[] listToSort, String sortingAlgorithm) {
+		int[] ranks = new int[numberOfRanks];
+		long time;
+		for(int i = 0; i < numberOfRanks; i++) {
+			time = timer.timeToSort(listToSort, sortingAlgorithm);
+			ranks[i] = ListCaseDistribution.getSortingRank(listOfTimes, time);
+		}
+		return ranks;	
+	}
 	
 	static public void runRankExperiments(String args[]) throws IOException{
-		SpeedAnalysis timer = new SpeedAnalysis();
 		ArrayList<int[]> listsToBeSorted = new ArrayList<int[]>(numberOfLists);
-		String[] sortingAlgorithm = {"QuickSort", "QuickSortMone1",/*"QuickSortMone2",*/"QuickSortMone3",/*"QuickSortMone4",
-				"QuickSortMone5","QuickSortMone6","QuickSortMone7","QuickSortMone8",*/"QuickSortMone9",/*"QuickSortPone1",
-				"QuickSortPone2","QuickSortPone3",*/"QuickSortPone4",/*"QuickSortPone5","QuickSortPone6","QuickSortPone7",
-				"QuickSortPone8","QuickSortPone9","QuickSortPone10","QuickSortPone11","QuickSortPone12",*/"QuickSortPone13",
-				//Quicksort, 10 Mone, 13 Pone
-				//"BubbleSort","BubbleSortMone1","BubbleSortMone2",/*"BubbleSortMone3","BubbleSortMone4","BubbleSortPone1",
-				//"BubbleSortPone2","BubbleSortPone3","BubbleSortPone4","BubbleSortPone5",*/ 
-				//BubbleSort, 4 Mone, 5 Pone
-				"HeapSort",/*"HeapSortMone1",*/"HeapSortMone2",/*"HeapSortMone3","HeapSortMone4","HeapSortMone5","HeapSortMone6",
-				"HeapSortMone7","HeapSortMone8","HeapSortPone1",*/"HeapSortPone2",/*"HeapSortPone3","HeapSortPone4",
-				"HeapSortPone5","HeapSortPone6","HeapSortPone7",*/
-				//HeapSort, 8 Mone, 7 Pone
-				"InsertionSort","InsertionSortMone1",/*"InsertionSortMone2",*/"InsertionSortPone1",//"InsertionSortPone2",
-				//InsertionSort, 2 Mone, 2 Pone'
-				/*"MergeSort","MergeSortMone1","MergeSortMone2","MergeSortMone2","MergeSortMone3","MergeSortMone4",
-				"MergeSortPone1","MergeSortPone2","MergeSortPone3","MergeSortPone4",*/
-				//MergeSort, Mone 4, Pone 4
-				"SelectionSort",/*"SelectionSortMone1","SelectionSortMone2",*/"SelectionSortMone3",/*"SelectionSortMone4",
-				"SelectionSortMone5","SelectionSortMone6","SelectionSortMone7","SelectionSortPone1",*/"SelectionSortPone2",
-				//"SelectionSortPone3","SelectionSortPone4",
-				//SelectionSort, Mone 6, Pone 4
-				"ShellSort","ShellSortMone1",/*"ShellSortMone2","ShellSortMone3","ShellSortMone4","ShellSortMone5",
-				"ShellSortMone6",*/"ShellSortPone1"//,"ShellSortPone2","ShellSortPone3","ShellSortPone4","ShellSortPone5"
-				//ShellSort, Mone 6, Pone 5
+		String[] sortingAlgorithm = {
+				"SelectionSort"
 		};
 		
 		
@@ -59,6 +49,7 @@ public class RankDistributionWorstByOriginal {
 			}
 			listsToBeSorted.add(list);
 		}
+		inputLists.close();
 		
 		ArrayList<int[]> listsSortedByOriginal = new ArrayList<int[]>(listsToBeSorted.size());
 		BufferedReader inPerturbedTimes;
@@ -96,25 +87,9 @@ public class RankDistributionWorstByOriginal {
 											sortingAlgorithm[i] + ".csv");
 				
 				
-				int l;
-				
 				for(int j = 0; j < 50; j++) {
 					listToBeSorted = listsSortedByOriginal.get(listsSortedByOriginal.size() - (50 -j));
-					currentRanks = new int[100];
-					for(int k = 0; k < 100; k++) {
-						timeToSortPerturbed = timer.timeToSort(listToBeSorted, sortingAlgorithm[i]);
-						if(j*k == 100 || j*k == 1000 || j*k == 2000 || j*k == 3000 || j*k == 4000) {
-							System.out.println(k);
-						}
-						l = 0;
-						
-						while(timeToSortPerturbed > perturbedTimes[l] && l < numberOfLists-1) {
-							l++;
-						}
-						currentRanks[k] = l;
-						
-					}
-					ranksOf50Worst.add(currentRanks);
+					ranksOf50Worst.add(getNRanks(nrOfRanks, currentTimes, listToBeSorted, sortingAlgorithm[i]));
 				}
 				
 				outRanks.println("Ranks");
@@ -149,25 +124,13 @@ public class RankDistributionWorstByOriginal {
 				
 				ranksOf50Worst = new ArrayList<int[]>(50);
 				currentRanks = new int[100];
-				int l;
 				
-				for(int j = 0; j < 50; j++) {	
-
-					currentRanks = new int[100];
-					for(int k = 0; k < 100; k++) {
-
-						timeToSortPerturbed = timer.timeToSort(listsSortedByOriginal.get(numberOfLists - (50-j)), sortingAlgorithm[i]);
-						if(j*k == 100 || j*k == 1000 || j*k == 2000 || j*k == 3000 || j*k == 4000) {
-							System.out.println(k);
-						}
-						l = 0;
-						
-						while(timeToSortPerturbed > currentTimes[l] && l < numberOfLists-1) {
-							l++;
-						}
-						currentRanks[k] = l;
+				for(int j = 0; j < 50; j++) {
+					if(j == 10 || j == 25  || j == 50) {
+						System.out.println(j);
 					}
-					ranksOf50Worst.add(currentRanks);
+					listToBeSorted = listsSortedByOriginal.get(listsSortedByOriginal.size() - (50 -j));
+					ranksOf50Worst.add(getNRanks(nrOfRanks, currentTimes, listToBeSorted, sortingAlgorithm[i]));
 				}
 				
 				
