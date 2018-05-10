@@ -88,7 +88,7 @@ public class RankDistributionWorstByOriginal {
 				
 				for(int j = 0; j < 50; j++) {
 					listToBeSorted = listsSortedByOriginal.get(listsSortedByOriginal.size() - (50 -j));
-					ranksOf50Worst.add(getNRanks(nrOfRanks, currentTimes, listToBeSorted, sortingAlgorithm[i]));
+					ranksOf50Worst.add(getNRanks(nrOfRanks, perturbedTimes, listToBeSorted, sortingAlgorithm[i]));
 				}
 				
 				outRanks.println("Ranks");
