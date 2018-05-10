@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -83,6 +84,7 @@ public class RankDistributionWorstByOriginal {
 					perturbedTimes[j] = timer.timeToSort(listsSortedByOriginal.get(i));
 				}
 				
+				Arrays.sort(perturbedTimes);
 				outRanks = new PrintWriter("ranksOfOnePercentWorstListsOfOriginalALgorithm" + 
 											sortingAlgorithm[i] + ".csv");
 				
