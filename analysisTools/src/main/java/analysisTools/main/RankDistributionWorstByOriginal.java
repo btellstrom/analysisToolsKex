@@ -28,8 +28,12 @@ public class RankDistributionWorstByOriginal {
 	
 	static public void runRankExperiments(String args[]) throws IOException{
 		ArrayList<int[]> listsToBeSorted = new ArrayList<int[]>(numberOfLists);
-		String[] sortingAlgorithm = {
-				"SelectionSort"
+		String[] sortingAlgorithm = {"QuickSort", "QuickSortMone1","QuickSortMone3",
+				"QuickSortMone9","QuickSortPone4","QuickSortPone13",
+				"HeapSort","HeapSortMone2","HeapSortPone2",
+				"InsertionSort","InsertionSortMone1","InsertionSortPone1",
+				"SelectionSort","SelectionSortMone3","SelectionSortPone2",
+				"ShellSort","ShellSortMone1","ShellSortMone6","ShellSortPone1","ShellSortPone3"
 		};
 		
 		
@@ -52,14 +56,13 @@ public class RankDistributionWorstByOriginal {
 		inputLists.close();
 		
 		ArrayList<int[]> listsSortedByOriginal = new ArrayList<int[]>(listsToBeSorted.size());
-		BufferedReader inPerturbedTimes;
 		PrintWriter outRanks;
 		long[] currentTimes;
 		ArrayList<int[]> ranksOf50Worst; // the originals ten percent worst lists for nonoriginal
 		long[] perturbedTimes;
 		int[] listToBeSorted;
-		long timeToSortPerturbed;
 		int[] currentRanks;
+		listsSortedByOriginal.addAll(listsToBeSorted);
 		
 		for(int i = 0; i < sortingAlgorithm.length; i++) {
 			currentTimes = new long[listsToBeSorted.size()];
@@ -67,25 +70,21 @@ public class RankDistributionWorstByOriginal {
 			if(sortingAlgorithm[i].contains("Mone") || sortingAlgorithm[i].contains("Pone")) {
 				
 				ranksOf50Worst = new ArrayList<int[]>(50);
-
-				
-				inPerturbedTimes = new BufferedReader(new FileReader("timesToSort5000" + sortingAlgorithm[i] + ".csv"));
-				inPerturbedTimes.readLine();
-				
 				perturbedTimes = new long[numberOfLists];
-				
 
 				for(int j = 0; j < 100; j++) { //anti-Jit warmup
-					timer.timeToSort(listsSortedByOriginal.get(0), sortingAlgorithm[i]);
+					timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i]);
 				}
 				
 				for(int j = 0; j < numberOfLists; j++) {
-					perturbedTimes[j] = Long.parseLong(inPerturbedTimes.readLine());
+					if(j ==100 || j == 1000 || j == 2500 || j == 4000) {
+						System.out.println(j);
+					}
+					perturbedTimes[j] = timer.timeToSort(listsSortedByOriginal.get(i));
 				}
 				
 				outRanks = new PrintWriter("ranksOfOnePercentWorstListsOfOriginalALgorithm" + 
 											sortingAlgorithm[i] + ".csv");
-				
 				
 				for(int j = 0; j < 50; j++) {
 					listToBeSorted = listsSortedByOriginal.get(listsSortedByOriginal.size() - (50 -j));
@@ -110,9 +109,12 @@ public class RankDistributionWorstByOriginal {
 			
 			else {
 				for(int j = 0; j < 100; j++) { //anti-Jit warmup
-					timer.timeToSort(listsToBeSorted.get(0), sortingAlgorithm[i]);
+					timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
 				}
 				for(int j = 0; j < listsToBeSorted.size(); j++) {
+					if(j ==100 || j == 1000 || j == 2500 || j == 4000) {
+						System.out.println(j);
+					}
 					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
 				}
 				listsSortedByOriginal = timer.getSortedByOriginal(listsToBeSorted, currentTimes);

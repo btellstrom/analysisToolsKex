@@ -22,3 +22,19 @@
 				"ShellSort","ShellSortMone1",/*"ShellSortMone2","ShellSortMone3","ShellSortMone4","ShellSortMone5",
 				"ShellSortMone6",*/"ShellSortPone1"//,"ShellSortPone2","ShellSortPone3","ShellSortPone4","ShellSortPone5"
 				//ShellSort, Mone 6, Pone 5
+
+%Lists for ranks
+##shellsort
+"ShellSort","ShellSortMone1","ShellSortMone6","ShellSortPone1","ShellSortPone3"
+
+##selectionsort
+"SelectionSort","SelectionSortMone3","SelectionSortPone2"
+
+##insertionsort
+"InsertionSort","InsertionSortMone1","InsertionSortPone1"
+
+##heapsort
+"HeapSort","HeapSortMone2","HeapSortPone2"
+
+##quicksort
+"QuickSort", "QuickSortMone1","QuickSortMone3","QuickSortMone9","QuickSortPone4","QuickSortPone13"
