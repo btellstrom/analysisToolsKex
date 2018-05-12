@@ -29,7 +29,8 @@ public class RankDistributionWorstByOriginal {
 	
 	static public void runRankExperiments(String args[]) throws IOException{
 		ArrayList<int[]> listsToBeSorted = new ArrayList<int[]>(numberOfLists);
-		String[] sortingAlgorithm = {"QuickSort", "QuickSortMone1","QuickSortMone3",
+		String[] sortingAlgorithm = {"QuickSort",
+				"QuickSortMone1","QuickSortMone3",
 				"QuickSortMone9","QuickSortPone4","QuickSortPone13",
 				"HeapSort","HeapSortMone2","HeapSortPone2",
 				"InsertionSort","InsertionSortMone1","InsertionSortPone1",
@@ -81,7 +82,7 @@ public class RankDistributionWorstByOriginal {
 					if(j ==100 || j == 1000 || j == 2500 || j == 4000) {
 						System.out.println(j);
 					}
-					perturbedTimes[j] = timer.timeToSort(listsSortedByOriginal.get(i));
+					perturbedTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
 				}
 				
 				Arrays.sort(perturbedTimes);
@@ -119,6 +120,7 @@ public class RankDistributionWorstByOriginal {
 					}
 					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
 				}
+				listsSortedByOriginal.clear();
 				listsSortedByOriginal = timer.getSortedByOriginal(listsToBeSorted, currentTimes);
 				Arrays.sort(currentTimes);
 				

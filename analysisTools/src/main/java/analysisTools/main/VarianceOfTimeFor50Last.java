@@ -26,7 +26,7 @@ public class VarianceOfTimeFor50Last {
 	
 	static public void runVarianceExperiments(String args[]) throws IOException{
 		ArrayList<int[]> listsToBeSorted = new ArrayList<int[]>(numberOfLists);
-		String[] sortingAlgorithm = {
+		String[] sortingAlgorithm = {"QuickSort",
 				"SelectionSort"
 		};
 		

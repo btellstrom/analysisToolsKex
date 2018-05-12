@@ -15,30 +15,10 @@ public class AllTests {
 	static public void runAllExperiments(String args[]) throws IOException{
 		SpeedAnalysis timer = new SpeedAnalysis();
 		ArrayList<int[]> listsToBeSorted = new ArrayList<int[]>(numberOfLists);
-		String[] sortingAlgorithm = {/*"QuickSort", "QuickSortMone1","QuickSortMone2","QuickSortMone3","QuickSortMone4",
-				"QuickSortMone5","QuickSortMone6","QuickSortMone7","QuickSortMone8","QuickSortMone9","QuickSortPone1",
-				"QuickSortPone2","QuickSortPone3","QuickSortPone4","QuickSortPone5","QuickSortPone6","QuickSortPone7",
-				"QuickSortPone8","QuickSortPone9","QuickSortPone10","QuickSortPone11","QuickSortPone12","QuickSortPone13",
-				//Quicksort, 10 Mone, 13 Pone
-				*/"BubbleSort","BubbleSortMone1","BubbleSortMone2",/*"BubbleSortMone3",*/"BubbleSortMone4","BubbleSortPone1",
-				"BubbleSortPone2","BubbleSortPone3","BubbleSortPone4","BubbleSortPone5",
-				//BubbleSort, 4 Mone, 5 Pone
-				/*"HeapSort","HeapSortMone1","HeapSortMone2","HeapSortMone3","HeapSortMone4","HeapSortMone5","HeapSortMone6",
-				"HeapSortMone7","HeapSortMone8","HeapSortPone1","HeapSortPone2","HeapSortPone3","HeapSortPone4",
-				"HeapSortPone5","HeapSortPone6","HeapSortPone7",
-				//HeapSort, 8 Mone, 7 Pone
-				"InsertionSort",/*"InsertionSortMone1","InsertionSortMone2","InsertionSortPone1","InsertionSortPone2"//,
-				//InsertionSort, 2 Mone, 2 Pone'
-				/*"MergeSort","MergeSortMone1","MergeSortMone2","MergeSortMone2","MergeSortMone3","MergeSortMone4",
-				"MergeSortPone1","MergeSortPone2","MergeSortPone3","MergeSortPone4",
+		String[] sortingAlgorithm = {"MergeSort","MergeSortMone1","MergeSortMone2","MergeSortMone2","MergeSortMone3","MergeSortMone4",
+				"MergeSortPone1","MergeSortPone2","MergeSortPone3","MergeSortPone4","BubbleSort","BubbleSortMone1","BubbleSortMone2",
+				"BubbleSortPone1","BubbleSortPone2","BubbleSortPone3","BubbleSortPone4"
 				//MergeSort, Mone 4, Pone 4
-				/*"SelectionSort",/*"SelectionSortMone1","SelectionSortMone2","SelectionSortMone3","SelectionSortMone4",
-				"SelectionSortMone5",/*"SelectionSortMone6","SelectionSortMone7","SelectionSortPone1","SelectionSortPone2",
-				/*"SelectionSortPone3",*//*"SelectionSortPone4",*/
-				//SelectionSort, Mone 6, Pone 4
-				/*"ShellSort","ShellSortMone1","ShellSortMone2","ShellSortMone3","ShellSortMone4","ShellSortMone5",
-				"ShellSortMone6","ShellSortPone1","ShellSortPone2","ShellSortPone3","ShellSortPone4","ShellSortPone5"*/
-				//ShellSort, Mone 6, Pone 5
 		};
 		
 		for(int i = 0; i < numberOfLists; i++) {
@@ -65,6 +45,8 @@ public class AllTests {
 		long[] currentTimes;
 		long[] tenPercentWorstTimes; // the originals ten percent worst lists for nonoriginal
 		int[] ranksOfTenPercentWorstTimes;
+
+		listsSortedByOriginal.addAll(listsToBeSorted);
 		
 		for(int i = 0; i < sortingAlgorithm.length; i++) {
 			currentTimes = new long[listsToBeSorted.size()];
@@ -73,8 +55,9 @@ public class AllTests {
 				
 				tenPercentWorstTimes = new long[(int)(listsToBeSorted.size()*0.1)];
 				
-				for(int j = 0; j < 15; j++) { //anti-Jit warmup
-					timer.timeToSort(listsSortedByOriginal.get(0), sortingAlgorithm[i]);
+				for(int j = 0; j < 100; j++) { //anti-Jit warmup
+					timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i]);
+					System.out.println(j);
 				}
 				
 				for(int j = 0; j < listsSortedByOriginal.size(); j++) {
@@ -114,8 +97,9 @@ public class AllTests {
 				outRanks.close();
 			}
 			else {
-				for(int j = 0; j < 15; j++) { //anti-Jit warmup
-					timer.timeToSort(listsToBeSorted.get(0), sortingAlgorithm[i]);
+				for(int j = 0; j < 100; j++) { //anti-Jit warmup
+					timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
+					System.out.println(j);
 				}
 				for(int j = 0; j < listsToBeSorted.size(); j++) {
 					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
