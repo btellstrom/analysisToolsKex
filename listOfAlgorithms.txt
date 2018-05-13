@@ -38,3 +38,7 @@
 
 ##quicksort
 "QuickSort", "QuickSortMone1","QuickSortMone3","QuickSortMone9","QuickSortPone4","QuickSortPone13"
+
+##bubblesort, working
+*/"BubbleSort","BubbleSortMone1","BubbleSortMone2",/*"BubbleSortMone3",*/"BubbleSortMone4","BubbleSortPone1",
+				"BubbleSortPone2","BubbleSortPone3","BubbleSortPone4","BubbleSortPone5",
