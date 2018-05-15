@@ -16,8 +16,7 @@ public class AllTests {
 		SpeedAnalysis timer = new SpeedAnalysis();
 		ArrayList<int[]> listsToBeSorted = new ArrayList<int[]>(numberOfLists);
 		String[] sortingAlgorithm = {"MergeSort","MergeSortMone1","MergeSortMone2","MergeSortMone2","MergeSortMone3","MergeSortMone4",
-				"MergeSortPone1","MergeSortPone2","MergeSortPone3","MergeSortPone4","BubbleSort","BubbleSortMone1","BubbleSortMone2",
-				"BubbleSortPone1","BubbleSortPone2","BubbleSortPone3","BubbleSortPone4"
+				"MergeSortPone1","MergeSortPone2","MergeSortPone3","MergeSortPone4"
 				//MergeSort, Mone 4, Pone 4
 		};
 		

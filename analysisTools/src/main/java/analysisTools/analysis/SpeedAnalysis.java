@@ -849,7 +849,7 @@ public class SpeedAnalysis {
 		//merge sort
 		else if(algorithm.equals("MergeSort")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -863,7 +863,7 @@ public class SpeedAnalysis {
 			//Mone algorithms
 		}else if(algorithm.equals("MergeSortMone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -876,7 +876,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -889,7 +889,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortMone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -902,7 +902,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortMone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -916,7 +916,7 @@ public class SpeedAnalysis {
 			// Pone algorithms
 		}else if(algorithm.equals("MergeSortPone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -929,7 +929,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortPone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -942,7 +942,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortPone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -955,7 +955,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortPone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < 500; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
