@@ -29,13 +29,8 @@ public class RankDistributionWorstByOriginal {
 	
 	static public void runRankExperiments(String args[]) throws IOException{
 		ArrayList<int[]> listsToBeSorted = new ArrayList<int[]>(numberOfLists);
-		String[] sortingAlgorithm = {"QuickSort",
-				"QuickSortMone1","QuickSortMone3",
-				"QuickSortMone9","QuickSortPone4","QuickSortPone13",
-				"HeapSort","HeapSortMone2","HeapSortPone2",
-				"InsertionSort","InsertionSortMone1","InsertionSortPone1",
-				"SelectionSort","SelectionSortMone3","SelectionSortPone2",
-				"ShellSort","ShellSortMone1","ShellSortMone6","ShellSortPone1","ShellSortPone3"
+		String[] sortingAlgorithm = {"BubbleSort","BubbleSortMone1","BubbleSortPone2",
+				"MergeSort","MergeSortMone2","MergeSortPone1"
 		};
 		
 		
