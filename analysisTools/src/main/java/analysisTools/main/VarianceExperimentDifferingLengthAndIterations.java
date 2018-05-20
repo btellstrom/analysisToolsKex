@@ -41,6 +41,11 @@ public class VarianceExperimentDifferingLengthAndIterations {
 	public void forNrOfSorts(int nrOfSorts, int[] listToBeSorted, String sortingAlgorithm, int nrOfMeasurements) throws FileNotFoundException {
 		long[] timeMeasurements = new long[nrOfMeasurements];
 		
+		//Jit warmup
+		for(int i = 0; i < 100; i++) {
+			timer.timeToSort(listToBeSorted, sortingAlgorithm, nrOfSorts);
+		}
+		
 		for(int i = 0; i < nrOfMeasurements; i++) {
 			timeMeasurements[i] = timer.timeToSort(listToBeSorted, sortingAlgorithm, nrOfSorts);
 		}

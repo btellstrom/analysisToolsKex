@@ -1,0 +1,27 @@
+filename = "generatedConfig.cfg"
+
+file = open(filename, w)
+
+file.write("nrOfMeasurements=1000")
+
+#want length to be 100 equidistant steps between 500 and 50.000
+stringToBeAppended = "listLength="
+
+for i in range(1,100):
+    stringToBeAppended += i*500
+
+file.write(stringToBeAppended)
+
+#want nrOfSorts to be 50 equidistant steps between 100 and 5000
+
+stringToBeAppended = "nrOfSorts="
+
+for i in range(1,50):
+    stringToBeAppended +=i*50
+
+file.write(stringToBeAppended)
+
+#the rest
+file.write("nrOfLists=1")
+file.write("sortingAlgorithms=QuickSort,BubbleSort,SelectionSort")
+file.write("fileFamily=initalTestOfVarianceWithLoopsOverLengthAndNrOfSorts")
