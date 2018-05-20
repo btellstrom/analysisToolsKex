@@ -14,17 +14,24 @@ public class VarianceOfTimeFor50Last {
 	private static int lengthOfLists = 1000; //The length of the lists we are sorting
 	private static int numberOfLists = 5000; //The number of lists we are comparing
 	private static int nrOfIterations = 100;
+	private static int nrOfSorts = 1500;
 	private static SpeedAnalysis timer = new SpeedAnalysis();
 	
-	static public long[] getNTimes(int numberOfTimes, int[] listToSort, String sortingAlgorithm) {
+	static public void setOptions(Options options) {
+		lengthOfLists = options.getListLength()[0];
+		numberOfLists = options.getNrOfLists();
+		nrOfSorts = options.getNrOfSorts()[0];
+	}
+	
+	public static long[] getNTimes(int numberOfTimes, int nrOfSorts, int[] listToSort, String sortingAlgorithm) {
 		long[] times = new long[numberOfTimes];
 		for(int i = 0; i < numberOfTimes; i++) {
-			times[i] = timer.timeToSort(listToSort, sortingAlgorithm);
+			times[i] = timer.timeToSort(listToSort, sortingAlgorithm, nrOfSorts);
 		}
 		return times;	
 	}
 	
-	static public void runVarianceExperiments(String args[]) throws IOException{
+	public static void runVarianceExperiments(String args[]) throws IOException{
 		ArrayList<int[]> listsToBeSorted = new ArrayList<int[]>(numberOfLists);
 		String[] sortingAlgorithm = {
 		};
@@ -70,15 +77,15 @@ public class VarianceOfTimeFor50Last {
 			if(sortingAlgorithm[i].contains("Mone") || sortingAlgorithm[i].contains("Pone")) {
 				
 				for(int j = 0; j < 100; j++) { //anti-Jit warmup
-					timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i]);
+					timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i], nrOfSorts);
 				}
 				
 				for(int j = 0; j < 50; j++) {
 					listToBeSorted = listsSortedByOriginal.get(listsSortedByOriginal.size() - (50 -j));
-					timesOf50Worst.add(getNTimes(nrOfIterations, listToBeSorted, sortingAlgorithm[i]));
+					timesOf50Worst.add(getNTimes(nrOfIterations, nrOfSorts, listToBeSorted, sortingAlgorithm[i]));
 					
 					listToBeSorted = listsSortedByOriginal.get(j);
-					timesOf50Best.add(getNTimes(nrOfIterations, listToBeSorted, sortingAlgorithm[i]));
+					timesOf50Best.add(getNTimes(nrOfIterations, nrOfSorts, listToBeSorted, sortingAlgorithm[i]));
 				}
 				
 
@@ -90,9 +97,9 @@ public class VarianceOfTimeFor50Last {
 				
 				for(int j = 0; j < 50; j++) {
 					listToBeSorted = listsSortedByOriginal.get(listsSortedByOriginal.size() - (50 -j));
-					timesOf50Worst.add(getNTimes(nrOfIterations, listToBeSorted, sortingAlgorithm[i]));
+					timesOf50Worst.add(getNTimes(nrOfIterations, nrOfSorts, listToBeSorted, sortingAlgorithm[i]));
 					listToBeSorted = listsSortedByOriginal.get(j);
-					timesOf50Best.add(getNTimes(nrOfIterations, listToBeSorted, sortingAlgorithm[i]));
+					timesOf50Best.add(getNTimes(nrOfIterations, nrOfSorts, listToBeSorted, sortingAlgorithm[i]));
 				}
 				
 				outTimesWorst.println("Times");
@@ -113,10 +120,10 @@ public class VarianceOfTimeFor50Last {
 			}
 			else {
 				for(int j = 0; j < 100; j++) { //anti-Jit warmup
-					timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
+					timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i], nrOfSorts);
 				}
 				for(int j = 0; j < listsToBeSorted.size(); j++) {
-					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
+					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i], nrOfSorts);
 				}
 				listsSortedByOriginal = timer.getSortedByOriginal(listsToBeSorted, currentTimes);
 				
@@ -128,9 +135,9 @@ public class VarianceOfTimeFor50Last {
 				
 				for(int j = 0; j < 50; j++) {
 					listToBeSorted = listsSortedByOriginal.get(listsSortedByOriginal.size() - (50 -j));
-					timesOf50Worst.add(getNTimes(nrOfIterations, listToBeSorted, sortingAlgorithm[i]));
+					timesOf50Worst.add(getNTimes(nrOfIterations, nrOfSorts, listToBeSorted, sortingAlgorithm[i]));
 					listToBeSorted = listsSortedByOriginal.get(j);
-					timesOf50Best.add(getNTimes(nrOfIterations, listToBeSorted, sortingAlgorithm[i]));
+					timesOf50Best.add(getNTimes(nrOfIterations, nrOfSorts, listToBeSorted, sortingAlgorithm[i]));
 				}
 				
 				outTimesWorst.println("Times");

@@ -16,6 +16,7 @@ public class Main {
 		int size = 1000;
 		String typeOfAnalysis = new String("returnTimes");
 		boolean orig = false;
+		String configFile = null;
 		
 		int index = 0;
 		for(String arg: args) {
@@ -60,6 +61,9 @@ public class Main {
 			}
 			if(arg.equalsIgnoreCase("--original")) {
 				orig = true;
+			}
+			if(arg.contains("-c") || arg.contains("--config")) {
+				configFile = args[index+1];
 			}
 
 			index++;
@@ -183,6 +187,10 @@ public class Main {
 			}catch(IOException e) {
 				System.out.println(e.getMessage());
 			}
+		}
+		else if(configFile != null) {
+			VarianceExperimentDifferingLengthAndIterations experiment = new VarianceExperimentDifferingLengthAndIterations(new Options(configFile));
+			experiment.runExperiment();
 		}
 		
 		

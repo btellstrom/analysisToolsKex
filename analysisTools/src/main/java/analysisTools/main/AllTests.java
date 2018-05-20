@@ -11,6 +11,13 @@ import analysisTools.analysis.SpeedAnalysis;
 public class AllTests {
 	private static int lengthOfLists = 1000; //The length of the lists we are sorting
 	private static int numberOfLists = 5000; //The number of lists we are comparing
+	private static int nrOfSorts = 500;
+	
+	static public void setOptions(Options options) {
+		lengthOfLists = options.getListLength()[0];
+		numberOfLists = options.getNrOfLists();
+		nrOfSorts = options.getNrOfSorts()[0];
+	}
 	
 	static public void runAllExperiments(String args[]) throws IOException{
 		SpeedAnalysis timer = new SpeedAnalysis();
@@ -55,12 +62,12 @@ public class AllTests {
 				tenPercentWorstTimes = new long[(int)(listsToBeSorted.size()*0.1)];
 				
 				for(int j = 0; j < 100; j++) { //anti-Jit warmup
-					timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i]);
+					timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i], nrOfSorts);
 					System.out.println(j);
 				}
 				
 				for(int j = 0; j < listsSortedByOriginal.size(); j++) {
-					currentTimes[j] = timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i]);
+					currentTimes[j] = timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i], nrOfSorts);
 					if(j == 100 || j == 1000 || j == 2000 || j == 3000 || j == 4000) {
 						System.out.println(j);
 					}
@@ -97,11 +104,11 @@ public class AllTests {
 			}
 			else {
 				for(int j = 0; j < 100; j++) { //anti-Jit warmup
-					timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
+					timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i], nrOfSorts);
 					System.out.println(j);
 				}
 				for(int j = 0; j < listsToBeSorted.size(); j++) {
-					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
+					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i], nrOfSorts);
 				}
 				listsSortedByOriginal = timer.getSortedByOriginal(listsToBeSorted, currentTimes);
 				Arrays.sort(currentTimes);

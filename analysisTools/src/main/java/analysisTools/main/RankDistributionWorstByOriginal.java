@@ -14,14 +14,21 @@ import analysisTools.analysis.SpeedAnalysis;
 public class RankDistributionWorstByOriginal {
 	private static int lengthOfLists = 1000; //The length of the lists we are sorting
 	private static int numberOfLists = 5000; //The number of lists we are comparing
+	private static int nrOfSorts = 1500;
 	private static int nrOfRanks = 100;
 	private static SpeedAnalysis timer = new SpeedAnalysis();
+	
+	static public void setOptions(Options options) {
+		lengthOfLists = options.getListLength()[0];
+		numberOfLists = options.getNrOfLists();
+		nrOfSorts = options.getNrOfSorts()[0];
+	}
 	
 	static public int[] getNRanks(int numberOfRanks, long[] listOfTimes,int[] listToSort, String sortingAlgorithm) {
 		int[] ranks = new int[numberOfRanks];
 		long time;
 		for(int i = 0; i < numberOfRanks; i++) {
-			time = timer.timeToSort(listToSort, sortingAlgorithm);
+			time = timer.timeToSort(listToSort, sortingAlgorithm, nrOfSorts);
 			ranks[i] = ListCaseDistribution.getSortingRank(listOfTimes, time);
 		}
 		return ranks;	
@@ -70,14 +77,14 @@ public class RankDistributionWorstByOriginal {
 				perturbedTimes = new long[numberOfLists];
 
 				for(int j = 0; j < 100; j++) { //anti-Jit warmup
-					timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i]);
+					timer.timeToSort(listsSortedByOriginal.get(j), sortingAlgorithm[i], nrOfSorts);
 				}
 				
 				for(int j = 0; j < numberOfLists; j++) {
 					if(j ==100 || j == 1000 || j == 2500 || j == 4000) {
 						System.out.println(j);
 					}
-					perturbedTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
+					perturbedTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i], nrOfSorts);
 				}
 				
 				Arrays.sort(perturbedTimes);
@@ -107,13 +114,13 @@ public class RankDistributionWorstByOriginal {
 			
 			else {
 				for(int j = 0; j < 100; j++) { //anti-Jit warmup
-					timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
+					timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i], nrOfSorts);
 				}
 				for(int j = 0; j < listsToBeSorted.size(); j++) {
 					if(j ==100 || j == 1000 || j == 2500 || j == 4000) {
 						System.out.println(j);
 					}
-					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i]);
+					currentTimes[j] = timer.timeToSort(listsToBeSorted.get(j), sortingAlgorithm[i], nrOfSorts);
 				}
 				listsSortedByOriginal.clear();
 				listsSortedByOriginal = timer.getSortedByOriginal(listsToBeSorted, currentTimes);

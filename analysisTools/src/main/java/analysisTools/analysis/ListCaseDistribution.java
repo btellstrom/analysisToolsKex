@@ -14,7 +14,7 @@ public class ListCaseDistribution {
 		long time = 0;
 		int rank = -1;
 		
-		time = analysis.timeToSort(list);
+		time = analysis.timeToSort(list, 1);
 
 		long[] timesCopy = new long[times.length];
 		//System.arraycopy(list, 0, oList, 0,  oList.length);

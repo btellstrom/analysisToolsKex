@@ -41,7 +41,7 @@ public class SpeedAnalysis {
 		for(int i = 0; i < numberOfIterations; i++) {
 			randomList = CreateInts.giveInts(length);
 
-			time = timeToSort(randomList);
+			time = timeToSort(randomList, 1);
 		
 			analysis.add(new DataClass(time, randomList));
 		}
@@ -61,7 +61,7 @@ public class SpeedAnalysis {
 		ArrayList<DataClass> ret = new ArrayList<DataClass>(sortedList.size());
 		
 		for(int i = 0; i < sortedList.size(); i++) {
-			ret.add(new DataClass(timeToSort(sortedList.get(i).getList()), sortedList.get(i).getList()));
+			ret.add(new DataClass(timeToSort(sortedList.get(i).getList(), 1), sortedList.get(i).getList()));
 		}
 		return ret;
 		
@@ -87,12 +87,12 @@ public class SpeedAnalysis {
 	 * @return the time taken to sort oList.
 	 * @throws IOException 
 	 */
-	public long timeToSort(int[] oList){
+	public long timeToSort(int[] oList, int nrOfSorts){
 		long startTime = System.nanoTime();
 		long endTime = System.nanoTime();
 		
 		startTime = System.nanoTime();
-		for( int j = 1; j < 500; j++ ) {
+		for( int j = 1; j < nrOfSorts; j++ ) {
 			
 			int[] list = new int[oList.length];
 			//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -106,13 +106,13 @@ public class SpeedAnalysis {
 		
 		return endTime - startTime;
 	}
-	public long timeToSort(int[] oList, String algorithm){
+	public long timeToSort(int[] oList, String algorithm, int nrOfSorts){
 		long startTime = System.nanoTime();
 		long endTime = System.nanoTime();
 		//QuickSort first. This loop will have constant time for the timemeasurement... Hmm, one if-statement more
 		if(algorithm.equals("QuickSort")) {	
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -126,7 +126,7 @@ public class SpeedAnalysis {
 			//Mone-algorithms
 		}else if(algorithm.equals("QuickSortMone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -140,7 +140,7 @@ public class SpeedAnalysis {
 
 		}else if(algorithm.equals("QuickSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -153,7 +153,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortMone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -166,7 +166,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortMone4")) {
 			startTime = System.nanoTime();
-		for( int j = 1; j < 1500; j++ ) {
+		for( int j = 1; j < nrOfSorts; j++ ) {
 			
 			int[] list = new int[oList.length];
 			//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -179,7 +179,7 @@ public class SpeedAnalysis {
 		endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortMone5")) {
 			startTime = System.nanoTime();
-		for( int j = 1; j < 1500; j++ ) {
+		for( int j = 1; j < nrOfSorts; j++ ) {
 			
 			int[] list = new int[oList.length];
 			//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -192,7 +192,7 @@ public class SpeedAnalysis {
 		endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortMone6")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -205,7 +205,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortMone7")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -218,7 +218,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortMone8")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -231,7 +231,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortMone9")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -244,7 +244,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortMone0")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -258,7 +258,7 @@ public class SpeedAnalysis {
 			//Pone-algorithms
 		}else if(algorithm.equals("QuickSortPone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -271,7 +271,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -284,7 +284,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -297,7 +297,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -310,7 +310,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone5")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -323,7 +323,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone6")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -336,7 +336,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone7")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -349,7 +349,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone8")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -362,7 +362,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone9")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -375,7 +375,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone10")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -388,7 +388,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone11")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -401,7 +401,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone12")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -414,7 +414,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("QuickSortPone13")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -430,7 +430,7 @@ public class SpeedAnalysis {
 		// BubbleSort
 		else if(algorithm.equals("BubbleSort")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -444,7 +444,7 @@ public class SpeedAnalysis {
 			//Mone algorithms
 		}else if(algorithm.equals("BubbleSortMone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -457,7 +457,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("BubbleSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -470,7 +470,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("BubbleSortMone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -483,7 +483,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("BubbleSortMone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -497,7 +497,7 @@ public class SpeedAnalysis {
 			//Pone algorithms
 		}else if(algorithm.equals("BubbleSortPone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -510,7 +510,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("BubbleSortPone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -523,7 +523,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("BubbleSortPone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -536,7 +536,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("BubbleSortPone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -549,7 +549,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("BubbleSortPone5")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -566,7 +566,7 @@ public class SpeedAnalysis {
 		//heapsort
 		else if(algorithm.equals("HeapSort")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -580,7 +580,7 @@ public class SpeedAnalysis {
 			//Mone algorithms
 		}else if(algorithm.equals("HeapSortMone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -593,7 +593,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -606,7 +606,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortMone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -619,7 +619,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortMone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -632,7 +632,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortMone5")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -645,7 +645,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortMone6")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -658,7 +658,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortMone7")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -671,7 +671,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortMone8")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -685,7 +685,7 @@ public class SpeedAnalysis {
 			//Pone algorithms
 		}else if(algorithm.equals("HeapSortPone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -698,7 +698,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortPone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -711,7 +711,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortPone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -724,7 +724,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortPone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -737,7 +737,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortPone5")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -750,7 +750,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortPone6")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -763,7 +763,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("HeapSortPone7")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -779,7 +779,7 @@ public class SpeedAnalysis {
 		//Insertion sort
 		else if(algorithm.equals("InsertionSort")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -793,7 +793,7 @@ public class SpeedAnalysis {
 			//Mone algorithms
 		}else if(algorithm.equals("InsertionSortMone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -806,7 +806,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("InsertionSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -820,7 +820,7 @@ public class SpeedAnalysis {
 			//Pone algorithms
 		}else if(algorithm.equals("InsertionSortPone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -833,7 +833,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("InsertionSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -849,7 +849,7 @@ public class SpeedAnalysis {
 		//merge sort
 		else if(algorithm.equals("MergeSort")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -863,7 +863,7 @@ public class SpeedAnalysis {
 			//Mone algorithms
 		}else if(algorithm.equals("MergeSortMone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -876,7 +876,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -889,7 +889,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortMone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -902,7 +902,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortMone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -916,7 +916,7 @@ public class SpeedAnalysis {
 			// Pone algorithms
 		}else if(algorithm.equals("MergeSortPone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -929,7 +929,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortPone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -942,7 +942,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortPone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -955,7 +955,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("MergeSortPone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -971,7 +971,7 @@ public class SpeedAnalysis {
 		//Selection sort
 		else if(algorithm.equals("SelectionSort")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -985,7 +985,7 @@ public class SpeedAnalysis {
 			//Mone algorithms
 		}else if(algorithm.equals("SelectionSortMone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -998,7 +998,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1011,7 +1011,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortMone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1024,7 +1024,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortMone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1037,7 +1037,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortMone5")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1050,7 +1050,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortMone6")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1063,7 +1063,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortMone7")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1077,7 +1077,7 @@ public class SpeedAnalysis {
 			//Pone algorithms
 		}else if(algorithm.equals("SelectionSortPone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1090,7 +1090,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortPone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1103,7 +1103,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortPone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1116,7 +1116,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("SelectionSortPone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1132,7 +1132,7 @@ public class SpeedAnalysis {
 		//Shell sort
 		else if(algorithm.equals("ShellSort")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1146,7 +1146,7 @@ public class SpeedAnalysis {
 			//Mone algorithms
 		}else if(algorithm.equals("ShellSortMone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1159,7 +1159,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortMone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1172,7 +1172,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortMone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1185,7 +1185,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortMone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1198,7 +1198,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortMone5")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1211,7 +1211,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortMone6")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1225,7 +1225,7 @@ public class SpeedAnalysis {
 			//Pone algorithms
 		}else if(algorithm.equals("ShellSortPone1")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1238,7 +1238,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortPone2")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1251,7 +1251,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortPone3")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1264,7 +1264,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortPone4")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
@@ -1277,7 +1277,7 @@ public class SpeedAnalysis {
 			endTime = System.nanoTime();
 		}else if(algorithm.equals("ShellSortPone5")) {
 			startTime = System.nanoTime();
-			for( int j = 1; j < 1500; j++ ) {
+			for( int j = 1; j < nrOfSorts; j++ ) {
 				
 				int[] list = new int[oList.length];
 				//System.arraycopy(list, 0, oList, 0,  oList.length);
