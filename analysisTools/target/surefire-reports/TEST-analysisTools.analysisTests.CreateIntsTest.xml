@@ -62,7 +62,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
+  <testcase classname="analysisTools.analysisTests.CreateIntsTest" name="testLength" time="0"/>
   <testcase classname="analysisTools.analysisTests.CreateIntsTest" name="testCreateIntsRandomness" time="0"/>
   <testcase classname="analysisTools.analysisTests.CreateIntsTest" name="testAlwaysOneZero" time="0"/>
-  <testcase classname="analysisTools.analysisTests.CreateIntsTest" name="testLength" time="0"/>
 </testsuite>

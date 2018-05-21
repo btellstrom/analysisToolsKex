@@ -49,7 +49,7 @@ public class VarianceExperimentDifferingLengthAndIterations {
 		for(int i = 0; i < nrOfMeasurements; i++) {
 			timeMeasurements[i] = timer.timeToSort(listToBeSorted, sortingAlgorithm, nrOfSorts);
 		}
-		printTimes(options.getFileFamily() + "Length" + listToBeSorted.length + sortingAlgorithm + "Times.csv", timeMeasurements);
+		printTimes(options.getFileFamily() + "Length" + listToBeSorted.length + sortingAlgorithm + nrOfSorts + "SortsTimes.csv", timeMeasurements);
 	}
 	
 	public void printList(String file, int[] list) throws FileNotFoundException {
