@@ -4,11 +4,11 @@ file = open(filename, "w")
 
 file.write("nrOfMeasurements=1000\n")
 
-#want length to be 100 equidistant steps between 500 and 50.000
+#want length to be 50 equidistant steps between 200 and 10.000
 stringToBeAppended = "listLength="
 
-for i in range(1,100):
-    stringToBeAppended += str(i*500) + ","
+for i in range(1,51):
+    stringToBeAppended += str(i*200) + ","
 
 file.write(stringToBeAppended)
 file.write("\n")
@@ -17,7 +17,7 @@ file.write("\n")
 
 stringToBeAppended = "nrOfSorts="
 
-for i in range(1,50):
+for i in range(1,51):
     stringToBeAppended += str(i*50) + ","
 
 file.write(stringToBeAppended)
@@ -26,4 +26,4 @@ file.write("\n")
 #the rest
 file.write("nrOfLists=1\n")
 file.write("sortingAlgorithms=QuickSort,BubbleSort,SelectionSort\n")
-file.write("fileFamily=initalTestOfVarianceWithLoopsOverLengthAndNrOfSorts\n")
+file.write("fileFamily=initialTestOfVariance/initalTestOfVarianceWithLoopsOverLengthAndNrOfSorts\n")
