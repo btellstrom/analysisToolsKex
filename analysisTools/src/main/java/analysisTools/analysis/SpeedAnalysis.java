@@ -85,7 +85,6 @@ public class SpeedAnalysis {
 	 * Measures the time it takes to sort a list.
 	 * @param oList the list to sort.
 	 * @return the time taken to sort oList.
-	 * @throws IOException 
 	 */
 	public long timeToSort(int[] oList, int nrOfSorts){
 		long startTime = System.nanoTime();
@@ -106,6 +105,41 @@ public class SpeedAnalysis {
 		
 		return endTime - startTime;
 	}
+	
+	
+	/**
+	 * Returns the time it takes to sort a list once, measured in nanoseconds.
+	 * @param oList the list to be sorted
+	 * @param sortingAlgorithm name of the sortingalgorithm to be used
+	 * @return (time when sorting ended) - (time when sorting began)
+	 */
+	public long timeToSortOnlyOnce(int[] oList, String sortingAlgorithm) {
+		long startTime = System.nanoTime();
+		long endTime = System.nanoTime();
+		
+		int[] list = new int[oList.length];
+		System.arraycopy(oList, 0, list, 0, oList.length);
+		
+		if(sortingAlgorithm.equals("QuickSort")) {
+			startTime = System.nanoTime();
+			QuickSort.sort(list, 0, list.length-1);
+			endTime = System.nanoTime();
+		}
+		else if(sortingAlgorithm.equals("BubbleSort")) {
+			startTime = System.nanoTime();
+			BubbleSort.sort(list);
+			endTime = System.nanoTime();
+		}
+		else if(sortingAlgorithm.equals("SelectionSort")) {
+			startTime = System.nanoTime();
+			SelectionSort.sort(list);
+			endTime = System.nanoTime();
+		}	
+		
+		return(endTime - startTime);
+		
+	}
+	
 	public long timeToSort(int[] oList, String algorithm, int nrOfSorts){
 		long startTime = System.nanoTime();
 		long endTime = System.nanoTime();

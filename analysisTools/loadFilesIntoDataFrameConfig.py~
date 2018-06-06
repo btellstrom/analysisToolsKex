@@ -1,0 +1,113 @@
+class config:
+
+    def __init__(self, fileName):
+        file = open(fileName,'r')
+        readConfig(self, file)
+
+    def readConfig(self, file):
+        #TODO, loop over option name rather than line?
+        for line in file:
+            if "nrOfLists" in line:
+                self.nrOfLists = int(line["nrOfLists".len():])
+
+            elif "fileFamily" in line:
+                self.fileFamily = line["fileFamily".len():]
+
+            optionName = line.split("=", 1)[0]
+            loopOverOption(self, optionName, line)
+
+
+    def loopOverOption(self, optionName, line):
+        index = 0
+        for string in line[optionName.len():].split(","):
+            if (optionName == "listLength"):
+                self.listLength[index] = int(string)
+            elif (optionName == "nrOfSorts"):
+                self.nrOfSorts[index] = int(string)
+            elif (optionName == "sortingAlgorithms"):
+                self.sortingAlgorithms[index] = string
+            elif (optionName == "nrOfMeasurements"):
+                self.nrOfMeasurements[index] = string
+
+            index += 1
+
+    def returnVariancePercentTotal(self, fileName):
+        file = open(fileName,"r")
+        return [calculatePercentualVariance(file), calculateTotalVariance(file)]
+
+    def calculateVarianceToFile(self):
+        #order: nrOfMeasurements, sortingAlgorithms, listLength, nrOfSorts
+        #name = fileFamily + "Length" + listLength + sortingAlgorithm + nrOfSorts + "SortsTimes.csv"
+
+        for nrOfMeasurements in self.nrOfMeasurements:
+            for sortingAlgorithm in self.sotingAlgorithms:
+                totalVarianceFile = open("totalVarianceFor" + sortingAlgorithm + "Initial.csv")
+                relativeVarianceFile = open("relativeVarianceFor" + sortingAlgorithm + "Initial.csv")
+                
+                row = 0
+                column = 0
+                for listLength in self.listLength:
+                    for nrOfSorts in self.nrOfSorts:
+                        fileName = self.fileFamily + "Length" + listLength + sortingAlgorithm + nrOfSorts + "SortsTimes.csv"
+                        variance = returnVariancePercentTotal(self, fileName)
+                        totalVariance[row][column] = variance[1]
+                        relativeVariance[row][column] = variance[0]
+                        column += 1
+                    row += 1
+
+                printToFile(self, totalVariance, totalVarianceFile)
+                printToFile(self, relativeVariance, relativeVarianceFile)
+
+
+    def printToFile(self, variance, file):
+        height = variance.len()
+        width = variance[0].len()
+
+        for i in range(0, height):
+            for j in range(0, width):
+                file.print(variance[i][j] + ",")
+
+
+def calculatePercentualVariance(file):
+    lines = file.readlines()
+    sum = 0
+    
+    for line in lines:
+        sum += long(line)
+
+    mean = long(sum/lines.len())
+
+    for i in range(0,lines.len()):
+        normalizedTimes[i] = long(line)/float(mean)
+
+    varianceSum = 0
+    
+    for time in normalizedTimes:
+        varianceSum += (time - 1)^2
+        
+    return varianceSum/normalizedTimes.len()
+
+def calculateTotalVariance(file):
+    lines = file.readlines()
+    sum = 0
+
+    for line in lines:
+        sum += long(line)
+
+    mean = sum/float(lines.len)
+
+    varianceSum = 0
+
+    for line in lines:
+        varianceSum += (long(line) - mean)^2
+
+    return varianceSum/float(lines.len())
+
+def main():
+    configFile = "generatedConfig.cfg"
+    
+    cofiguration = config(configFile)
+
+    configuration.calculateVarianceToFile()
+
+main()

@@ -1,0 +1,36 @@
+file = open("generatedConfig.py","r")
+
+class config:
+    
+    def __init__(fileName):
+        file = open(filename,'r')
+
+
+
+    def readConfig(file):
+        #TODO, loop over option name rather than line?
+        for line in file:
+            if "nrOfMeasurements" in line:
+                this.nrOfMeasurements = int(line["nrOfMeasurements".len():])
+
+            else if "nrOfLists" in line:
+                this.nrOfLists = int(line["nrOfLists".len():])
+
+            else if "fileFamily" in line:
+                this.fileFamily = line["fileFamily".len():]
+
+            optionName = line.split("=", 1)[0]
+            loopOverOption(optionName, line)
+
+
+    def loopOverOption(optionName, line):
+        index = 0
+        for string in line[optionName.len():].split(","):
+            if (optionName == "listLength"):
+                this.listLength[index] = int(string)
+            else if (optionName == "nrOfSorts"):
+                this.nrOfSorts[index] = int(string)
+            else if (optionName == "sortingAlgorithms"):
+                this.sortingAlgorithms[index] = string
+
+            index += 1
